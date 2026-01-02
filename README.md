@@ -1,4 +1,4 @@
-# 校园网静默登录脚本
+# 校园网静默登录工具
 
 云南财经大学校园网自动登录工具，无需打开浏览器即可完成认证。
 
@@ -9,30 +9,67 @@
 - ✅ 自动获取本机IP和MAC地址
 - ✅ 支持 教学/办公 和 宿舍/住宅 两种上网类型
 
-## 使用方法
+---
 
-### 1. 安装依赖
+## 📦 EXE 版本使用教程（推荐）
 
-```bash
-pip install -r requirements.txt
-```
+### 第一步：准备配置文件
 
-### 2. 配置账号信息
-
-复制示例配置文件：
-
-```bash
-cp config.json.example config.json
-```
-
-编辑 `config.json`，填入你的账号信息：
+在 exe 文件所在目录下，创建一个名为 `config.json` 的文件，内容如下：
 
 ```json
 {
   "username": "你的学号",
   "password": "你的密码",
   "domain": "1- @ynufe",
-  "service_ip": "http://xxx.xxx.xxx.xxx",
+  "service_ip": "http://xxx 校园网ip",
+  "ac_id": 7
+}
+```
+
+**配置说明：**
+- `username`: 你的学号
+- `password`: 你的密码
+- `domain`: 上网类型
+  - `1- @ynufe`：教学/办公上网
+  - `2- @ctc`：宿舍/住宅上网
+- `service_ip`: 校园网服务器地址（xxx改为登录界面的ip地址，最后的/不要）
+- `ac_id`: 接入点ID（一般不需要修改）
+
+### 第二步：运行程序
+
+双击 `校园网登录.exe` 即可自动登录。
+
+**注意事项：**
+- ⚠️ exe 文件和 `config.json` 必须在同一文件夹下
+- ⚠️ 如果程序没有反应，可能是静默运行，查看网络连接状态确认是否登录成功
+
+---
+
+## 🐍 脚本版本使用教程
+
+### 第一步：安装 Python 环境
+
+确保你的电脑已安装 Python 3.7 或更高版本。
+
+### 第二步：安装依赖
+
+打开命令行，进入项目目录，运行：
+
+```bash
+pip install -r requirements.txt
+```
+
+### 第三步：配置账号信息
+
+在项目目录下创建或编辑 `config.json` 文件：
+
+```json
+{
+  "username": "你的学号",
+  "password": "你的密码",
+  "domain": "1- @ynufe",
+  "service_ip": "http://172.16.130.31",
   "ac_id": 7
 }
 ```
@@ -41,11 +78,13 @@ cp config.json.example config.json
 - `1- @ynufe`：教学/办公上网
 - `2- @ctc`：宿舍/住宅上网
 
-### 3. 运行脚本
+### 第四步：运行脚本
 
 ```bash
 python login.py
 ```
+
+运行后会显示登录结果，成功会显示 "✓ 登录成功！"。
 
 ## 技术说明
 
